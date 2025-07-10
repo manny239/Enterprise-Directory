@@ -1,0 +1,212 @@
+[
+  {
+    "fullName": "Michael Johnson",
+    "phoneNumber": "555-123-4567",
+    "jobRole": "Software Engineer",
+    "workLocation": "New York",
+    "salary": 85000
+  },
+  {
+    "fullName": "Sarah Williams",
+    "phoneNumber": "555-234-5678",
+    "jobRole": "Marketing Manager",
+    "workLocation": "Chicago",
+    "salary": 78000
+  },
+  {
+    "fullName": "David Thompson",
+    "phoneNumber": "555-345-6789",
+    "jobRole": "Financial Analyst",
+    "workLocation": "Boston",
+    "salary": 72000
+  },
+  {
+    "fullName": "Jennifer Davis",
+    "phoneNumber": "555-456-7890",
+    "jobRole": "Human Resources Director",
+    "workLocation": "San Francisco",
+    "salary": 92000
+  },
+  {
+    "fullName": "Robert Wilson",
+    "phoneNumber": "555-567-8901",
+    "jobRole": "Product Manager",
+    "workLocation": "Seattle",
+    "salary": 95000
+  },
+  {
+    "fullName": "Lisa Martinez",
+    "phoneNumber": "555-678-9012",
+    "jobRole": "Customer Support Specialist",
+    "workLocation": "Austin",
+    "salary": 55000
+  },
+  {
+    "fullName": "James Anderson",
+    "phoneNumber": "555-789-0123",
+    "jobRole": "Sales Representative",
+    "workLocation": "Denver",
+    "salary": 68000
+  },
+  {
+    "fullName": "Patricia Taylor",
+    "phoneNumber": "555-890-1234",
+    "jobRole": "Graphic Designer",
+    "workLocation": "Portland",
+    "salary": 62000
+  },
+  {
+    "fullName": "Thomas Brown",
+    "phoneNumber": "555-901-2345",
+    "jobRole": "IT Support Technician",
+    "workLocation": "Atlanta",
+    "salary": 59000
+  },
+  {
+    "fullName": "Elizabeth Garcia",
+    "phoneNumber": "555-012-3456",
+    "jobRole": "Operations Manager",
+    "workLocation": "Miami",
+    "salary": 82000
+  },
+  {
+    "fullName": "Daniel Rodriguez",
+    "phoneNumber": "555-234-5678",
+    "jobRole": "Data Scientist",
+    "workLocation": "New York",
+    "salary": 105000
+  },
+  {
+    "fullName": "Nancy Lee",
+    "phoneNumber": "555-345-6789",
+    "jobRole": "Content Writer",
+    "workLocation": "Los Angeles",
+    "salary": 65000
+  },
+  {
+    "fullName": "Christopher White",
+    "phoneNumber": "555-456-7890",
+    "jobRole": "Project Manager",
+    "workLocation": "Chicago",
+    "salary": 88000
+  },
+  {
+    "fullName": "Karen Harris",
+    "phoneNumber": "555-567-8901",
+    "jobRole": "UX Designer",
+    "workLocation": "San Francisco",
+    "salary": 79000
+  },
+  {
+    "fullName": "Matthew Clark",
+    "phoneNumber": "555-678-9012",
+    "jobRole": "Systems Administrator",
+    "workLocation": "Seattle",
+    "salary": 75000
+  },
+  {
+    "fullName": "Susan Lewis",
+    "phoneNumber": "555-789-0123",
+    "jobRole": "Account Executive",
+    "workLocation": "Dallas",
+    "salary": 71000
+  },
+  {
+    "fullName": "Kevin Walker",
+    "phoneNumber": "555-890-1234",
+    "jobRole": "Business Analyst",
+    "workLocation": "Phoenix",
+    "salary": 76000
+  },
+  {
+    "fullName": "Margaret Hall",
+    "phoneNumber": "555-901-2345",
+    "jobRole": "Quality Assurance Tester",
+    "workLocation": "Boston",
+    "salary": 67000
+  },
+  {
+    "fullName": "Joseph Young",
+    "phoneNumber": "555-012-3456",
+    "jobRole": "Frontend Developer",
+    "workLocation": "Austin",
+    "salary": 83000
+  },
+  {
+    "fullName": "Dorothy Allen",
+    "phoneNumber": "555-123-4567",
+    "jobRole": "Executive Assistant",
+    "workLocation": "Denver",
+    "salary": 58000
+  },
+  {
+    "fullName": "Richard King",
+    "phoneNumber": "555-234-5678",
+    "jobRole": "Backend Developer",
+    "workLocation": "Portland",
+    "salary": 87000
+  },
+  {
+    "fullName": "Linda Wright",
+    "phoneNumber": "555-345-6789",
+    "jobRole": "Social Media Coordinator",
+    "workLocation": "Atlanta",
+    "salary": 61000
+  },
+  {
+    "fullName": "Charles Scott",
+    "phoneNumber": "555-456-7890",
+    "jobRole": "Network Engineer",
+    "workLocation": "Miami",
+    "salary": 79000
+  },
+  {
+    "fullName": "Barbara Green",
+    "phoneNumber": "555-567-8901",
+    "jobRole": "Customer Success Manager",
+    "workLocation": "New York",
+    "salary": 73000
+  },
+  {
+    "fullName": "Mark Adams",
+    "phoneNumber": "555-678-9012",
+    "jobRole": "DevOps Engineer",
+    "workLocation": "Los Angeles",
+    "salary": 98000
+  },
+  {
+    "fullName": "Betty Baker",
+    "phoneNumber": "555-789-0123",
+    "jobRole": "HR Specialist",
+    "workLocation": "Chicago",
+    "salary": 64000
+  },
+  {
+    "fullName": "Paul Nelson",
+    "phoneNumber": "555-890-1234",
+    "jobRole": "Mobile Developer",
+    "workLocation": "San Francisco",
+    "salary": 89000
+  },
+  {
+    "fullName": "Sandra Carter",
+    "phoneNumber": "555-901-2345",
+    "jobRole": "Marketing Coordinator",
+    "workLocation": "Seattle",
+    "salary": 60000
+  },
+  {
+    "fullName": "George Mitchell",
+    "phoneNumber": "555-012-3456",
+    "jobRole": "Technical Writer",
+    "workLocation": "Dallas",
+    "salary": 66000
+  },
+  {
+    "fullName": "Donna Perez",
+    "phoneNumber": "555-123-4567",
+    "jobRole": "Chief Technology Officer",
+    "workLocation": "Phoenix",
+    "salary": 145000
+  }
+]
