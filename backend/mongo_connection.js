@@ -7,7 +7,7 @@ async function connectToMongo() {
         const client = new MongoClient(uri)
         await client.connect()
         console.log('Connected to MongoDB successfully')
-        return client.db(process.env.DB_NAME || 'emonlyeesDB')
+        return client.db(process.env.DB_NAME || 'employeeDB')
     } catch (err) {
         console.error('Error connecting to Mongo', err)
     }

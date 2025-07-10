@@ -4,32 +4,29 @@ import { connectToMongo } from '../mongo_connection.js'
 const router = Router()
 
 const generateUsername = (name) => {
-    const [firstName, lastName] = name.split(' ')
+    return name.replace(/\s+/g, '').toLowerCase()
+  }
 
-    const username = firstName[0] + lastName.toLowerCase()
-
-    return username
-}
 
 router.post('/login', async (req, res) => {
-    const { username, password } = req.body;
-
+    console.log('POST /api/login hit with body:', req.body) 
+    const { username, password } = req.body
+  
     try {
-        const db = await connectToMongo();
+      const db = await connectToMongo()
+  
+      const employees = await db.collection('employees').find({}).toArray()
+      console.log(`Total employees in DB: ${employees.length}`)
 
-        // Fetch all employees (or add filters if you want)
-        const employees = await db.collection('employees').find({}).toArray();
 
-        // Find employee matching generated username
-        const employee = employees.find(emp => {
-            const [firstName, lastName] = emp.name.split(' ');
-            const generatedUsername = (firstName[0] + lastName).toLowerCase();
-            return generatedUsername === username.toLowerCase();
-        });
-
-        if (!employee) {
-            return res.status(401).json({ error: 'User not found' });
-        }
+      // Match username
+      const employee = employees.find(emp =>
+        generateUsername(emp.name) === username.toLowerCase()
+      )
+  
+      if (!employee) {
+        return res.status(401).json({ error: 'User not found' })
+      }
 
         // Password check (demo): password == 'rap' or matches MongoDB _id as string
         const validpw = password === 'rap' || password === employee._id.toString();
