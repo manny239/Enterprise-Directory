@@ -23,7 +23,6 @@ app.use(cors({
 app.use(express.json())
 app.use('/api/auth', authRouter);
 app.use('/api/valid', validDataRouter);
-app.use('/api', authRouter)
 app.use('/api', userRouter)
 app.use('/api', searchRouter);
 
@@ -33,7 +32,7 @@ app.use('/api', searchRouter);
 
 //Fire up Server
 const server = app.listen(PORT, async() => {
-    console.log(`Serverr running on port ${PORT}`)
+    console.log(`Server running on port ${PORT}`)
     await connectToMongo()
 })
 

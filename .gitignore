@@ -16,3 +16,5 @@ react/.vite/deps/react-router-dom.js
 react/.vite/deps/react-router-dom.js.map
 react/.vite/deps/react.js
 react/.vite/deps/react.js.map
+react/node_modules/*
+backend/node_modules/*
