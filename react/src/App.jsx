@@ -1,5 +1,5 @@
-import React,  {useState, useEffect} from 'react';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.js";
 import './App.css'
@@ -16,16 +16,23 @@ function App() {
   const [data, setData] = useState([]);
 
   return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/employee" element={<EmployeePage />} />
-        <Route path="/predict" element={<PredictPage />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+      <Router>
+        <Header />
+        <div style={{flex: "1 0 auto"}}>
+          <Routes>
+          <Route path="/" element={<Welcome />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/employee" element={<EmployeePage />} />
+          <Route path="/predict" element={<PredictPage />} />
+        </Routes>
+        </div>
+        
+        <div style={{marginTop: "auto"}}>
+          <Footer />
+        </div>
+      </Router>
+    </div>
   );
 };
 
