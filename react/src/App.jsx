@@ -8,6 +8,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import LoginForm from './components/LoginForm'
 import EmployeePage from './components/EmployeePage'
+import PredictPage from './components/PredictPage'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/employee" element={<EmployeePage />} />
+        <Route path="/predict" element={<PredictPage />} />
       </Routes>
       <Footer />
     </Router>
