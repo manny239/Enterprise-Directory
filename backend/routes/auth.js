@@ -9,15 +9,13 @@ const generateUsername = (name) => {
 
 
 router.post('/login', async (req, res) => {
-    console.log('POST /api/login hit with body:', req.body) 
+    console.log('POST /api/auth/login hit with body:', req.body) 
     const { username, password } = req.body
   
     try {
       const db = await connectToMongo()
-  
       const employees = await db.collection('employees').find({}).toArray()
       console.log(`Total employees in DB: ${employees.length}`)
-
 
       // Match username
       const employee = employees.find(emp =>
@@ -35,7 +33,18 @@ router.post('/login', async (req, res) => {
             return res.status(401).json({ error: 'Invalid Password' });
         }
 
-        res.json(employee);
+      res.json({
+          success: true,
+          message: 'Login successful',
+          user: {
+              _id: employee._id,
+              fullName: employee.name,
+              phoneNumber: employee.phoneNumber,
+              jobRole: employee.jobRole,
+              workLocation: employee.workLocation,
+              salary: employee.salary
+          }
+      });
     } catch (err) {
         console.error('Error during login:', err);
         res.status(500).json({ error: 'Login failed', details: err });

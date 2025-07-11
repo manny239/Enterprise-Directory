@@ -7,7 +7,7 @@ import Welcome from './components/Welcome'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import LoginForm from './components/LoginForm'
-
+import EmployeePage from './components/EmployeePage'
 
 function App() {
 
@@ -20,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/employee" element={<EmployeePage />} />
       </Routes>
       <Footer />
     </Router>
