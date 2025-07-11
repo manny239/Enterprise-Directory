@@ -77,7 +77,7 @@ const PredictPage = ({ }) => {
       <form onSubmit={handleSubmit} className="p-3">
         <div className="form-group" style={{padding: "0.5rem"}}>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <label htmlFor="jobRole" style={{width: "10rem"}}>Job Role</label>
+            <label htmlFor="jobRole" style={{width: "10rem", color: "white"}}>Job Role</label>
             <select
               className="form-control"
               id="jobRole"
@@ -96,7 +96,7 @@ const PredictPage = ({ }) => {
         </div>
         <div className="form-group" style={{padding: "0.5rem"}}>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <label htmlFor="workLocation" style={{width: "10rem"}}>Work Location</label>
+            <label htmlFor="workLocation" style={{width: "10rem", color: "white"}}>Work Location</label>
             <select
               className="form-control"
               id="workLocation"
