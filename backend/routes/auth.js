@@ -39,10 +39,11 @@ router.post('/login', async (req, res) => {
           user: {
               _id: employee._id,
               fullName: employee.name,
-              phoneNumber: employee.phoneNumber,
-              jobRole: employee.jobRole,
-              workLocation: employee.workLocation,
-              salary: employee.salary
+              // mapping snake_case database properties to camelCase frontend properties
+              phoneNumber: employee.phone_number,
+              jobRole: employee.job_role,
+              workLocation: employee.work_location,
+              salary: employee.salary,
           }
       });
     } catch (err) {

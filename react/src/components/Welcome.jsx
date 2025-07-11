@@ -5,7 +5,9 @@ import "bootstrap/dist/js/bootstrap.js";
 const Welcome = () => {
     return(
         <>
-            <p>Body content here</p>
+            <section>
+            
+            </section>
         </>
     );
 };
