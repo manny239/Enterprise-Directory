@@ -1,12 +1,12 @@
 from flask import Flask, jsonify, request
 import pandas as pd
-import pickle
+import cloudpickle
 
 app = Flask(__name__)
 
 # Load the model
 with open ("./trained_model.pkl", "rb") as file:
-    model = pickle.load (file)
+    model = cloudpickle.load (file)
 
 @app.route("/api/predict", methods=["POST"])
 def getSocks ():
