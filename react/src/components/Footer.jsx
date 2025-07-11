@@ -58,7 +58,7 @@ const Footer = () => {
             <footer className="glassmorphism-footer">
                 <div className="container">
                     <div className="footer-content">
-                        <strong>© 2025 Enterprise Directory - Bad Bandits Inc. All rights reserved</strong>
+                        <strong>© 2025 Enterprise Directory - Bit Bandits Inc. All rights reserved</strong>
                     </div>
                     <div className="footer-divider"></div>
                     <div className="footer-links">

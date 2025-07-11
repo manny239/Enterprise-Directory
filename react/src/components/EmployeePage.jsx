@@ -5,6 +5,8 @@ const EmployeePage = () => {
     const navigate = useNavigate();
     const [employee, setEmployee] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [manager, setManager] = useState(null);
+    const [subordinate, setSubordinate] = useState(null);
 
     //get user data from navigation state
     const {fullName, userId, userData} = location.state ||{};
@@ -40,21 +42,51 @@ const EmployeePage = () => {
                     <button className="btn btn-outline-success" type="submit"> Search </button>
                 </form>
             </section>
-            <div className = "card" style={{flex: "1", minWidth: "200px", maxWidth: "25%", marginLeft: "100px"}}>
-                <div className = "card-body">
-                    <h5 className="card-title">Employee Information:</h5>
-                    <div className="card-text">Full Name: {employee.fullName}</div>
-                    <div className="card-text">Phone Number: {employee.phoneNumber}</div>
-                    <div className="card-text">Job Role: {employee.jobRole}</div>
-                    <div className="card-text">Work Location: {employee.workLocation}</div>
-                    <div className="card-text">Salary: {employee.salary}</div>
-                    <div className="card-text">Employee ID: {employee._id}</div>
+
+            <section className="employee-details">
+                <div className = "card" style={{flex: "1", minWidth: "200px", maxWidth: "25%", marginLeft: "100px"}}>
+                    <div className = "card-body">
+                        <h5 className="card-title">Employee Information:</h5>
+                        <div className="card-text">Full Name: {employee.fullName}</div>
+                        <div className="card-text">Phone Number: {employee.phoneNumber}</div>
+                        <div className="card-text">Job Role: {employee.jobRole}</div>
+                        <div className="card-text">Work Location: {employee.workLocation}</div>
+                        <div className="card-text">Salary: {employee.salary}</div>
+                        <div className="card-text">Employee ID: {employee._id}</div>
                     
-                    <button className = "btn btn-secondary mt-3" onClick={() => navigate('/login')}>
-                        Logout
-                    </button>
+                        <button className = "btn btn-secondary mt-3" onClick={() => navigate('/login')}>
+                            Logout
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </section>
+
+            <h3> Reports To </h3>
+            <section className="reports-to">
+                <div className = "card" style={{flex: "1", minWidth: "200px", maxWidth: "25%", marginLeft: "100px"}}>
+                    <div className = "card-body">
+                        <h5 className="card-title">Employee Information:</h5>
+                        <div className="card-text">Full Name: {manager.fullName}</div>
+                        <div className="card-text">Phone Number: {manager.phoneNumber}</div>
+                        <div className="card-text">Job Role: {manager.jobRole}</div>
+                        <div className="card-text">Work Location: {manager.workLocation}</div>
+                    </div>
+                </div>
+            </section>
+            
+            <h3>Direct Reports</h3>
+            <section className="in-charge-of">
+                <div className = "card" style={{flex: "1", minWidth: "200px", maxWidth: "25%", marginLeft: "100px"}}>
+                    <div className = "card-body">
+                        <h5 className="card-title">Employee Information:</h5>
+                        <div className="card-text">Full Name: {subordinate.fullName}</div>
+                        <div className="card-text">Phone Number: {subordinate.phoneNumber}</div>
+                        <div className="card-text">Job Role: {subordinate.jobRole}</div>
+                        <div className="card-text">Work Location: {subordinate.workLocation}</div>
+                        <div className="card-text">Salary: {subordinate.salary}</div>
+                    </div>
+                </div>
+            </section>
         </>
 
     );
