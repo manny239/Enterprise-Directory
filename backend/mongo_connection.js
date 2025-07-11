@@ -3,7 +3,7 @@ import { MongoClient} from 'mongodb'
 //Mongo Connection
 async function connectToMongo() {
     try {
-        const uri = process.env.MONGO_URI
+        const uri = process.env.MONGO_URI || 'mongodb://localhost:27017'
         const client = new MongoClient(uri)
         await client.connect()
         console.log('Connected to MongoDB successfully')

@@ -75,4 +75,49 @@ router.post('/user', async (req, res) => {
   })
 })
 
+// New route to get manager and subordinate data by employee ID
+router.get('/employee/:id/hierarchy', async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const db = await connectToMongo()
+    const employees = await db.collection('employees').find({}).toArray()
+
+    const currentEmployee = employees.find(emp => emp._id === id)
+    if (!currentEmployee) {
+      return res.status(404).json({ error: 'Employee not found' })
+    }
+
+    // Find manager using reportsTo field
+    let manager = null
+    if (currentEmployee.reportsTo) {
+      manager = employees.find(emp => emp._id === currentEmployee.reportsTo)
+    }
+
+    // Find subordinates (employees who report to this employee)
+    const subordinates = employees.filter(emp => emp.reportsTo === currentEmployee._id)
+
+    res.json({
+      manager: manager ? {
+        _id: manager._id,
+        fullName: manager.name,
+        phoneNumber: manager.phone_number,
+        jobRole: manager.job_role,
+        workLocation: manager.work_location
+      } : null,
+      subordinates: subordinates.map(sub => ({
+        _id: sub._id,
+        fullName: sub.name,
+        phoneNumber: sub.phone_number,
+        jobRole: sub.job_role,
+        workLocation: sub.work_location,
+        salary: sub.salary
+      }))
+    })
+  } catch (error) {
+    console.error('Error fetching hierarchy:', error)
+    res.status(500).json({ error: 'Failed to fetch hierarchy data' })
+  }
+})
+
 export default router

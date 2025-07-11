@@ -9,15 +9,22 @@ const generateUsername = (name) => {
 
 
 router.post('/login', async (req, res) => {
-    console.log('POST /api/login hit with body:', req.body) 
+    console.log('POST /api/auth/login hit with body:', req.body) 
     const { username, password } = req.body
   
     try {
       const db = await connectToMongo()
+      
+      if (!db) {
+        return res.status(500).json({ error: 'Database connection failed' })
+      }
   
       const employees = await db.collection('employees').find({}).toArray()
       console.log(`Total employees in DB: ${employees.length}`)
 
+      if (employees.length === 0) {
+        return res.status(500).json({ error: 'No employees found in database' })
+      }
 
       // Match username
       const employee = employees.find(emp =>
@@ -25,6 +32,7 @@ router.post('/login', async (req, res) => {
       )
   
       if (!employee) {
+        console.log('Available usernames:', employees.slice(0, 5).map(emp => generateUsername(emp.name)))
         return res.status(401).json({ error: 'User not found' })
       }
 
@@ -49,7 +57,7 @@ router.post('/login', async (req, res) => {
         });
     } catch (err) {
         console.error('Error during login:', err);
-        res.status(500).json({ error: 'Login failed', details: err });
+        res.status(500).json({ error: 'Login failed', details: err.message });
     }
 });
 

@@ -4,7 +4,6 @@ import dotenv from 'dotenv'
 import { connectToMongo } from './mongo_connection.js'
 import authRouter from './routes/auth.js'
 import validDataRouter from './routes/validData.js'
-import cors from 'cors'
 import userRouter from './routes/user.js'
 import searchRouter from './routes/search.js'
 

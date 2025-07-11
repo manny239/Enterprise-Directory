@@ -50,7 +50,8 @@ const LoginForm = () => {
         setIsSubmitting(true);
         
         try {
-            const response = await fetch(`${baseUrl}/api/login`, {
+            console.log('Attempting login to:', `${baseUrl}/api/auth/login`);
+            const response = await fetch(`${baseUrl}/api/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -62,6 +63,7 @@ const LoginForm = () => {
             });
 
             const data = await response.json();
+            console.log('Login response:', data);
 
             if (response.ok) {
                 setLoginStatus('Login successful');
@@ -77,11 +79,11 @@ const LoginForm = () => {
                     });
                 }, 1000);
             } else {
-                setLoginStatus(data.message || 'Login failed');
+                setLoginStatus(data.error || data.message || 'Login failed');
             }
         } catch (error) {
             console.error('Login error:', error);
-            setLoginStatus('Network error. Please try again.');
+            setLoginStatus('Network error. Please try again. Is the backend server running?');
         } finally {
             setIsSubmitting(false);
         }
