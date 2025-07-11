@@ -50,7 +50,7 @@ const LoginForm = () => {
         setIsSubmitting(true);
         
         try {
-            const response = await fetch(`${baseUrl}/api/auth/login`, {
+            const response = await fetch(`${baseUrl}/api/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
