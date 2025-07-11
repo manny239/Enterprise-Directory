@@ -62,7 +62,7 @@ const Header = () => {
             <nav className="glassmorphism-header">
               <div className="container-fluid">
                 <div className="d-flex justify-content-between align-items-center w-100">
-                  <Link to="/" className="brand-title">Enterprise Directory</Link>
+                  <Link to="/" className="brand-title">Bit Bandits Enterprise Directory</Link>
                   <div className="d-flex">
                     <ul className="navbar-nav d-flex flex-row">
                       <li className="nav-item">
