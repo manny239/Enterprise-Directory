@@ -3,6 +3,8 @@ import { connectToMongo } from '../mongo_connection.js'
 
 const router = Router()
 
+const directReportsCache = {}
+
 function getTier(role = '') {
   const r = role.toLowerCase()
   if (r === 'ceo' || r.includes('chief') || r.includes('vp')) return 1
@@ -12,8 +14,13 @@ function getTier(role = '') {
   return 5
 }
 
-// POST /api/me
-router.post('/me', async (req, res) => {
+function getRandomItems(arr, count) {
+  const shuffled = [...arr].sort(() => 0.5 - Math.random())
+  return shuffled.slice(0, count)
+}
+
+
+router.post('/user', async (req, res) => {
   const { username } = req.body
 
   if (!username) {
@@ -34,18 +41,23 @@ router.post('/me', async (req, res) => {
   const userTier = getTier(currentUser.job_role)
   const userLocation = currentUser.work_location
 
-  // Find manager (1 tier above in same location)
   const manager = employees.find(emp =>
     getTier(emp.job_role) < userTier &&
     emp.work_location === userLocation
   )
 
-  // Find direct reports (1 tier below in same location)
-  const directReports = employees.filter(emp =>
-    getTier(emp.job_role) > userTier &&
-    emp.work_location === userLocation &&
-    emp.name !== currentUser.name
-  )
+  let randomDirectReports = directReportsCache[username]
+
+  if (!randomDirectReports) {
+    const directReports = employees.filter(emp =>
+      getTier(emp.job_role) > userTier &&
+      emp.work_location === userLocation &&
+      emp.name !== currentUser.name
+    )
+    const numDirectReports = Math.floor(Math.random() * 3) + 1 
+    randomDirectReports = getRandomItems(directReports, numDirectReports)
+    directReportsCache[username] = randomDirectReports
+  }
 
   res.json({
     name: currentUser.name,
@@ -54,11 +66,11 @@ router.post('/me', async (req, res) => {
     phone_number: currentUser.phone_number,
     salary: currentUser.salary,
     reportsTo: manager ? manager.name : null,
-    directReports: directReports.map(e => ({
+    directReports: randomDirectReports.map(e => ({
       name: e.name,
       job_role: e.job_role,
       work_location: e.work_location,
-      salary: e.salary // Frontend can hide this unless HR
+      salary: e.salary
     }))
   })
 })
