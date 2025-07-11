@@ -15,15 +15,16 @@ const PORT = process.env.PORT || 3000
 app.use(express.json())
 app.use('/api', authRouter)
 app.use('/api', userRouter)
-app.use('/api', searchRoute);
+app.use('/api', searchRouter);
+app.use('/api', authRouter)
 
-
-
-  
+app.get ("/api/status", (req, res) => {
+    res.status (200).json ({status: "Server is running!"})
+})
 
 //Fire up Server
 const server = app.listen(PORT, async() => {
-    console.log(`Serverr running on port ${PORT}`)
+    console.log(`Server running on port ${PORT}`)
     await connectToMongo()
 })
 
