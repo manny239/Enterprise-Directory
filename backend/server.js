@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3000
 app.use(express.json())
 app.use('/api', authRouter)
 app.use('/api', userRouter)
-app.use('/api', searchRouter);
+app.use('/api', searchRoute);
 
 
 
