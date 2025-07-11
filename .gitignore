@@ -1,4 +1,5 @@
 ml/datasets/*
+ml/trained_model.pkl
 react/.vite/deps/_metadata.json
 react/.vite/deps/bootstrap_dist_js_bootstrap__js.js
 react/.vite/deps/bootstrap_dist_js_bootstrap__js.js.map
