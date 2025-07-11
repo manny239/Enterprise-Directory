@@ -60,13 +60,6 @@ const Footer = () => {
                     <div className="footer-content">
                         <strong>© 2025 Enterprise Directory - Bit Bandits Inc. All rights reserved</strong>
                     </div>
-                    <div className="footer-divider"></div>
-                    <div className="footer-links">
-                        <a href="#" className="footer-link">Privacy Policy</a>
-                        <a href="#" className="footer-link">Terms of Service</a>
-                        <a href="#" className="footer-link">Contact Us</a>
-                        <a href="#" className="footer-link">Help Center</a>
-                    </div>
                 </div>
             </footer>
         </>
