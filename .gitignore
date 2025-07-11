@@ -1,1 +1,4 @@
 ml/datasets/*
+react/node_modules/*
+_metadata.json
+ml/trained_model.pkl
