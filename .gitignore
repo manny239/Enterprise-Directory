@@ -1,9 +1,6 @@
 ml/datasets/*
-react/node_modules/*
-_metadata.json
 ml/trained_model.pkl
-react/.env
-ml/trained_model.pkl
+react/.vite/deps/_metadata.json
 react/.vite/deps/bootstrap_dist_js_bootstrap__js.js
 react/.vite/deps/bootstrap_dist_js_bootstrap__js.js.map
 react/.vite/deps/chunk-D2KY6O3O.js
@@ -19,3 +16,5 @@ react/.vite/deps/react-router-dom.js
 react/.vite/deps/react-router-dom.js.map
 react/.vite/deps/react.js
 react/.vite/deps/react.js.map
+react/node_modules/*
+backend/node_modules/*

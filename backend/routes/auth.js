@@ -35,7 +35,18 @@ router.post('/login', async (req, res) => {
             return res.status(401).json({ error: 'Invalid Password' });
         }
 
-        res.json(employee);
+        res.json({
+            success: true,
+            message: 'Login successful',
+            user: {
+                _id: employee._id,
+                fullName: employee.name,
+                phoneNumber: employee.phone_number,
+                jobRole: employee.job_role,
+                workLocation: employee.work_location,
+                salary: employee.salary
+            }
+        });
     } catch (err) {
         console.error('Error during login:', err);
         res.status(500).json({ error: 'Login failed', details: err });

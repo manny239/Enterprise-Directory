@@ -6,7 +6,7 @@ const router = Router();
 
 //Checks if user can see salary
 function canSeeSalary(role) {
-  return role.includes('HR') || role.includes('Human Fesources');
+  return role.includes('HR') || role.includes('Human Resources');
 }
 
 //Places Resticted Tag Salary if user is not in HR
@@ -39,7 +39,7 @@ async function getEmployees() {
 
 //Search Feature
 router.get('/search', async (req, res) => {
-  const { query } = req.query;
+  const { query, userRole } = req.query;
   try {
     const employees = await getEmployees();
 
@@ -49,9 +49,11 @@ router.get('/search', async (req, res) => {
       emp.work_location.toLowerCase().includes(query.toLowerCase())
     );
 
+    // Check if the searching user (not the searched employee) can see salaries
+    const searcherCanSeeSalary = userRole ? canSeeSalary(userRole) : false;
+
     const modifiedResults = searchResults.map(emp => {
-      const canSee = canSeeSalary(emp.job_role);
-      return getEmployeeData(emp, canSee);
+      return getEmployeeData(emp, searcherCanSeeSalary);
     });
 
     res.json(modifiedResults);
