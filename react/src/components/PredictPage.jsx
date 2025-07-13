@@ -26,11 +26,13 @@ const PredictPage = ({ }) => {
         work_location: workLocation,
       }
 
+      console.log(`${basePredUrl}/predict`)
       const response = await fetch(`${basePredUrl}/predict`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        mode: 'cors',
         body: JSON.stringify(submission),
       });
 
@@ -39,7 +41,7 @@ const PredictPage = ({ }) => {
       }
 
       const data = await response.json();
-      alert(`Predicted Salary: ${data[0]}`)
+      alert(`Predicted Salary: $${data[0].toFixed (2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`)
     } catch (error) {
       console.error("Error posting data", error)
       alert("Error making the prediction")
@@ -48,25 +50,30 @@ const PredictPage = ({ }) => {
 
   useEffect(() => {
     async function getValidValues() {
-      let validJobRolesUrl = `${baseMainUrl}/validjobroles`
-      let validWorkLocationsUrl = `${baseMainUrl}/validworklocations`
+      let validJobRolesUrl = `${baseMainUrl}/valid/jobroles`
+      let validWorkLocationsUrl = `${baseMainUrl}/valid/worklocations`
 
-      // try {
-      //   // Should return arrays of strings
-      //   let validJobRolesResult = await fetch(validJobRolesUrl).then(res => res.json())
-      //   let validWorkLocationsResult = await fetch(validWorkLocationsUrl).then(res => res.json())
+      try {
+        // Should return arrays of strings
+        let validJobRolesResult = await fetch(validJobRolesUrl).then(res => res.json())
+        let validWorkLocationsResult = await fetch(validWorkLocationsUrl).then(res => res.json())
 
-      //   setValidJobRoles(new Set(validJobRolesResult))
-      //   setValidWorkLocations(new Set(validWorkLocationsResult))
-      // }
-      // catch (err) {
-      //   console.error (err)
-      //   alert ("Failed to fetch valid data for the form options.")
-      // }
-
-      // TEMP
-      setValidJobRoles(new Set(["Director", "Software Engineer", "HR", "Police Enforcer"]))
-      setValidWorkLocations(new Set(["USA", "UK", "China", "Australia"]))
+        setValidJobRoles(new Set(validJobRolesResult))
+        setValidWorkLocations(new Set(validWorkLocationsResult))
+        
+        // Set default values for jobRole and workLocation when data is loaded
+        if (validJobRolesResult.length > 0) {
+          setJobRole(validJobRolesResult[0])
+        }
+        
+        if (validWorkLocationsResult.length > 0) {
+          setWorkLocation(validWorkLocationsResult[0])
+        }
+      }
+      catch (err) {
+        console.error(err)
+        alert("Failed to fetch valid data for the form options.")
+      }
     }
 
     getValidValues()
@@ -88,7 +95,7 @@ const PredictPage = ({ }) => {
             >
               {
                 [...validJobRoles].sort().map((job) => {
-                  return <option key={job}>{job}</option>
+                  return <option key={job} value={job}>{job}</option>
                 })
               }
             </select>
@@ -107,7 +114,7 @@ const PredictPage = ({ }) => {
             >
               {
                 [...validWorkLocations].sort().map((location) => {
-                  return <option key={location}>{location}</option>
+                  return <option key={location} value={location}>{location}</option>
                 })
               }
             </select>
