@@ -1,0 +1,32 @@
+[
+    {
+        "work_location":"UK",
+        "job_role":"Software Engineer",
+        "name":"Allison Hill",
+        "phone_number":"3494000332"
+    },
+    {
+        "work_location":"USA",
+        "job_role":"Data Analyst",
+        "name":"Noah Rhodes",
+        "phone_number":"3885180614"
+    },
+    {
+        "work_location":"Canada",
+        "job_role":"Manager",
+        "name":"Angie Henderson",
+        "phone_number":"9797910708"
+    },
+    {
+        "work_location":"USA",
+        "job_role":"Sales Associate",
+        "name":"Daniel Wagner",
+        "phone_number":"7579040229"
+    },
+    {
+        "work_location":"USA",
+        "job_role":"Director",
+        "name":"Cristian Santos",
+        "phone_number":"2402910568"
+    }
+]

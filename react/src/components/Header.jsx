@@ -8,10 +8,10 @@ const Header = () => {
         <>
             <style>{`
                 .glassmorphism-header {
-                    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-                    backdrop-filter: blur(10px);
-                    border: 1px solid rgba(255,255,255,0.1);
-                    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+                    background: linear-gradient(135deg, rgba(10,15,30,0.9), rgba(20,25,45,0.85));
+                    backdrop-filter: blur(15px);
+                    border: 1px solid rgba(255,255,255,0.15);
+                    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
                     margin: 0;
                     padding: 1rem 0;
                     position: sticky;
@@ -35,17 +35,20 @@ const Header = () => {
                     transition: all 0.3s ease;
                     background: transparent;
                     border: 1px solid transparent;
+                    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
                 }
                 .glassmorphism-header .nav-link:hover {
-                    background: rgba(255,255,255,0.1);
-                    border: 1px solid rgba(255,255,255,0.2);
+                    background: rgba(255,255,255,0.15);
+                    border: 1px solid rgba(255,255,255,0.3);
                     transform: translateY(-2px);
-                    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+                    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+                    color: #ffffff !important;
                 }
                 .glassmorphism-header .nav-link.active {
-                    background: rgba(255,255,255,0.2);
-                    border: 1px solid rgba(255,255,255,0.3);
+                    background: rgba(255,255,255,0.25);
+                    border: 1px solid rgba(255,255,255,0.4);
                     font-weight: 600;
+                    color: #ffffff !important;
                 }
                 .glassmorphism-header .brand-title {
                     color: #ffffff;
@@ -53,6 +56,13 @@ const Header = () => {
                     font-weight: 600;
                     text-decoration: none;
                     margin-right: 2rem;
+                    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+                    transition: all 0.3s ease;
+                }
+                .glassmorphism-header .brand-title:hover {
+                    color: #ffffff;
+                    text-shadow: 0 2px 8px rgba(255,255,255,0.3);
+                    transform: translateY(-1px);
                 }
                 body {
                     background: linear-gradient(135deg, #080710, #1a1a2e);
@@ -73,9 +83,6 @@ const Header = () => {
                       </li>
                       <li className="nav-item">
                         <Link className="nav-link" to="/predict">Predict</Link>
-                      </li>
-                      <li className="nav-item">
-                        <a className="nav-link" href="#">About Us</a>
                       </li>
                     </ul>
                   </div>
