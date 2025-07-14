@@ -79,8 +79,8 @@ const EmployeePage = () => {
         
         setIsSearching(true);
         try {
-            // Pass the current user's job role to determine salary visibility
-            const searchUrl = `${baseUrl}/api/search?query=${encodeURIComponent(searchQuery)}&userRole=${encodeURIComponent(employee.jobRole || '')}`;
+            // Pass the current user's job role and ID to determine salary visibility
+            const searchUrl = `${baseUrl}/api/search?query=${encodeURIComponent(searchQuery)}&userRole=${encodeURIComponent(employee.jobRole || '')}&userId=${encodeURIComponent(employee._id || '')}`;
             
             const response = await fetch(searchUrl, {
                 method: 'GET',
@@ -322,7 +322,11 @@ const EmployeePage = () => {
                                 <div className="card-text"><strong>Phone:</strong> {subordinate.phoneNumber || 'N/A'}</div>
                                 <div className="card-text"><strong>Role:</strong> {subordinate.jobRole || 'N/A'}</div>
                                 <div className="card-text"><strong>Location:</strong> {subordinate.workLocation || 'N/A'}</div>
-                                <div className="card-text"><strong>Salary:</strong> {subordinate.salary ? `$${subordinate.salary.toLocaleString()}` : 'N/A'}</div>
+                                <div className="card-text"><strong>Salary:</strong> {
+                                    subordinate.salary === 'Restricted' ? 
+                                    'Restricted' : 
+                                    (subordinate.salary ? `$${subordinate.salary.toLocaleString()}` : 'N/A')
+                                }</div>
                             </div>
                         ))}
                     </div>

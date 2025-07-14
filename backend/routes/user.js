@@ -97,6 +97,30 @@ router.get('/employee/:id/hierarchy', async (req, res) => {
     // Find subordinates (employees who report to this employee)
     const subordinates = employees.filter(emp => emp.reportsTo === currentEmployee._id)
 
+    // Helper function to check if user can see salary
+    const canSeeSalary = (userRole, userEmployeeId, targetEmployee, allEmployees) => {
+      // HR can see all salaries
+      if (userRole && (userRole.includes('HR') || userRole.includes('Human Resources'))) {
+        console.log(`HR user ${userRole} can see all salaries`);
+        return true;
+      }
+      
+      // Check if the user is the manager of the target employee
+      if (userEmployeeId && targetEmployee.reportsTo === userEmployeeId) {
+        // Manager can only see salary if they earn MORE than their subordinate
+        // This prevents managers from seeing salaries of higher-paid subordinates
+        const userEmployee = allEmployees.find(emp => emp._id === userEmployeeId);
+        if (userEmployee && userEmployee.salary > targetEmployee.salary) {
+          console.log(`Manager ${userEmployee.name} ($${userEmployee.salary}) can see subordinate ${targetEmployee.name} ($${targetEmployee.salary})`);
+          return true;
+        } else if (userEmployee) {
+          console.log(`Manager ${userEmployee.name} ($${userEmployee.salary}) CANNOT see subordinate ${targetEmployee.name} ($${targetEmployee.salary}) - subordinate earns more`);
+        }
+      }
+      
+      return false;
+    }
+
     res.json({
       manager: manager ? {
         _id: manager._id,
@@ -105,14 +129,17 @@ router.get('/employee/:id/hierarchy', async (req, res) => {
         jobRole: manager.job_role,
         workLocation: manager.work_location
       } : null,
-      subordinates: subordinates.map(sub => ({
-        _id: sub._id,
-        fullName: sub.name,
-        phoneNumber: sub.phone_number,
-        jobRole: sub.job_role,
-        workLocation: sub.work_location,
-        salary: sub.salary
-      }))
+      subordinates: subordinates.map(sub => {
+        const canViewSalary = canSeeSalary(currentEmployee.job_role, currentEmployee._id, sub, employees);
+        return {
+          _id: sub._id,
+          fullName: sub.name,
+          phoneNumber: sub.phone_number,
+          jobRole: sub.job_role,
+          workLocation: sub.work_location,
+          salary: canViewSalary ? sub.salary : 'Restricted'
+        }
+      })
     })
   } catch (error) {
     console.error('Error fetching hierarchy:', error)
