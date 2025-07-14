@@ -7,7 +7,6 @@ import validDataRouter from './routes/validData.js'
 import userRouter from './routes/user.js'
 import searchRouter from './routes/search.js'
 
-
 dotenv.config()
 
 const app = express()
@@ -25,9 +24,9 @@ app.use('/api/valid', validDataRouter);
 app.use('/api', userRouter)
 app.use('/api', searchRouter);
 
-
-
-
+app.get ("/api/status", (req, res) => {
+    res.status (200).json ({status: "Server is running!"})
+})
 
 //Fire up Server
 const server = app.listen(PORT, async() => {

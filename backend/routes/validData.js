@@ -7,7 +7,7 @@ router.get ("/jobroles", async (req, res) => {
     try {
         const db = await connectToMongo()
         const collection = db.collection("employees")
-        const data = await collection.distinct("job_role").toArray()
+        const data = await collection.distinct("job_role")
 
         res.status(200).json(data)
     }
@@ -21,7 +21,7 @@ router.get ("/worklocations", async (req, res) => {
     try {
         const db = await connectToMongo()
         const collection = db.collection("employees")
-        const data = await collection.distinct("work_location").toArray()
+        const data = await collection.distinct("work_location")
 
         res.status(200).json(data)
     }
