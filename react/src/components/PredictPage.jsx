@@ -4,7 +4,7 @@ import { useState } from "react"
 
 const PredictPage = ({ }) => {
   const [mode, setMode] = useState("none") // none, file, single
-  const [selectedMode, setSelectedMode] = useState("none") // none, file, single
+  const [selectedMode, setSelectedMode] = useState("single") // none, file, single
 
   const handleModeChange = (e) => {
     setSelectedMode(e.target.value)
