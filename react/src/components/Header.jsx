@@ -26,7 +26,7 @@ const Header = () => {
                     gap: 2rem;
                 }
                 .glassmorphism-header .nav-link {
-                    color: #ffffff !important;
+                    color:rgb(250, 19, 19) !important;
                     font-weight: 500;
                     font-size: 16px;
                     text-decoration: none;
@@ -48,7 +48,7 @@ const Header = () => {
                     background: rgba(255,255,255,0.25);
                     border: 1px solid rgba(255,255,255,0.4);
                     font-weight: 600;
-                    color: #ffffff !important;
+                    color:rgb(224, 35, 35) !important;
                 }
                 .glassmorphism-header .brand-title {
                     color: #ffffff;

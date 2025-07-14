@@ -272,6 +272,32 @@ const EmployeePage = () => {
                 <div className="hierarchy-card" style={{flex: "1", minWidth: "200px", maxWidth: "25%", marginLeft: "100px"}}>
                     <div className="card-body">
                         <h5 className="card-title">Employee Information</h5>
+                        
+                        {/* Employee Photo */}
+                        {employee.picture_url && (
+                            <div className="employee-photo-container" style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                marginBottom: '15px'
+                            }}>
+                                <img 
+                                    src={employee.picture_url} 
+                                    alt={`${employee.fullName || 'Employee'} profile`}
+                                    style={{
+                                        width: '120px',
+                                        height: '120px',
+                                        borderRadius: '50%',
+                                        objectFit: 'cover',
+                                        border: '3px solid rgba(255,255,255,0.3)',
+                                        boxShadow: '0 4px 16px rgba(0,0,0,0.2)'
+                                    }}
+                                    onError={(e) => {
+                                        e.target.style.display = 'none';
+                                    }}
+                                />
+                            </div>
+                        )}
+                        
                         <div className="card-text">Full Name: {employee.fullName || 'N/A'}</div>
                         <div className="card-text">Phone Number: {employee.phoneNumber || 'N/A'}</div>
                         <div className="card-text">Job Role: {employee.jobRole || 'N/A'}</div>

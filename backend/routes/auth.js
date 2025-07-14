@@ -52,7 +52,8 @@ router.post('/login', async (req, res) => {
                 phoneNumber: employee.phone_number,
                 jobRole: employee.job_role,
                 workLocation: employee.work_location,
-                salary: employee.salary
+                salary: employee.salary,
+                picture_url: employee.picture_url
             }
         });
     } catch (err) {
